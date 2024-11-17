@@ -8,57 +8,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.7/dist/plyr.css" />
 <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.7/dist/plyr.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const players = document.querySelectorAll('.ap');
-
-  const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
-
-  players.forEach(function(player) {
-    const plyr = new Plyr(player, { controls: ['play', 'progress'] });
-
-    player.addEventListener('play', function() {
-      players.forEach(function(otherPlayer) {
-        if (otherPlayer !== player && !otherPlayer.paused) {
-          otherPlayer.pause();
-        }
-      });
-    });
-
-    if (!isMobile) { // Только для устройств НЕ мобильных
-      const controlsContainer = document.createElement('div');
-      controlsContainer.classList.add('controls');
-
-      const buttons = [
-        { text: '00', class: 'db-0', volume: 1 },
-        { text: '12', class: 'db-12', volume: 0.25 },
-        { text: '24', class: 'db-24', volume: 0.0625 },
-        { text: '36', class: 'db-36', volume: 0.0156 },
-        { text: '48', class: 'db-48', volume: 0.0032 }
-      ];
-
-      buttons.forEach((btn, index) => {
-        const button = document.createElement('button');
-        button.textContent = btn.text;
-        button.classList.add(btn.class);
-
-        if (index === 0) {
-          button.classList.add('active');
-          plyr.volume = btn.volume;
-        }
-
-        button.addEventListener('click', function () {
-          plyr.volume = btn.volume;
-          controlsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-          button.classList.add('active');
-        });
-
-        controlsContainer.appendChild(button);
-      });
-
-      player.parentElement.appendChild(controlsContainer);
-    }
-  });
+document.addEventListener('DOMContentLoaded', function() {
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    document.body.innerHTML = '<p>Эта страница недоступна на мобильных устройствах.</p>';
+  }
 });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {const players = document.querySelectorAll('.ap');players.forEach(function(player) {const plyr = new Plyr(player, {controls: ['play', 'progress']});player.addEventListener('play', function() {players.forEach(function(otherPlayer) {if (otherPlayer !== player && !otherPlayer.paused) {otherPlayer.pause();}});});const controlsContainer = document.createElement('div');controlsContainer.classList.add('controls');const buttons = [{text: '00', class: 'db-0', volume: 1}, {text: '12', class: 'db-12', volume: 0.25}, {text: '24', class: 'db-24', volume: 0.0625}, {text: '36', class: 'db-36', volume: 0.0156}, {text: '48', class: 'db-48', volume: 0.0032}];buttons.forEach((btn, index) => {const button = document.createElement('button');button.textContent = btn.text;button.classList.add(btn.class);if (index === 0) {button.classList.add('active');plyr.volume = btn.volume;}button.addEventListener('click', function() {plyr.volume = btn.volume;controlsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));button.classList.add('active');});controlsContainer.appendChild(button);});player.parentElement.appendChild(controlsContainer);});});
 </script>
 
 <style>
@@ -86,25 +43,33 @@ p {display: inline-block; outline: solid black 2px; width: 100%; margin: 6px; pa
 <body>
 
 
-<p class="text-head" style="font-size: 21px; ">рекомендации к установкам уровней</p>
-<p class="text-dop" style="color: brown; text-align: center;">!для десктопной версии страницы!</p>
-<p class="text-main">все значения, кроме нуля, понижают уровень и эквивалентны количеству дБ.</p>
-<p class="text-main">значения "12" и "48" &mdash; служат для переключения уровней "нормально" и "тихо" соответственно. уровни для прослушивания в наушниках.</p>
-<p class="text-main">значения "24" и "36" &mdash; служат для переключения уровней "нормально" и "умеренно тихо" соответственно. уровни для прослушивания в мониторах.</p>
-<p class="text-dop" style="color: brown; text-align: center;">!для мобильной версии страницы!</p>
-<p class="text-main">к сожалению, не существует прямого доступа к регулировке уровней с мобильных устройств. все значения статичны, кнопки</p>
+<p class="text-main" style="font-weight: 400; text-align: center;">кейс #1</p>
 
 
-
-
-
-<br>&emsp;
+<p class="text-main">трек #1: ov = 5.8 &rarr; cv = same<!--winner--></p>
 <div class="player-container">
 <audio class="ap" controls>
 <source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
 </audio>
 </div>
 
+<p class="text-main">трек #2: ov = 4.6 &rarr; cv = 5.8<!--second--></p>
+<div class="player-container">
+<audio class="ap" controls>
+<source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
+</audio>
+</div>
+
+
+<p class="text-main">трек #3: ov = 5.9 &rarr; cv = 5.8<!--third--></p>
+<div class="player-container">
+<audio class="ap" controls>
+<source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
+</audio>
+</div>
+
+
+<p class="text-main">трек #4: ov = 5.8 &rarr; cv = same<!--mine--></p>
 <div class="player-container">
 <audio class="ap" controls>
 <source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
