@@ -9,6 +9,13 @@
 <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.7/dist/plyr.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  if (navigator.userAgentData && navigator.userAgentData.mobile) {
+    document.querySelectorAll('.controls').forEach(control => {
+      control.style.display = 'none';
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
   const players = document.querySelectorAll('.ap');
 
   players.forEach(function(player) {
@@ -43,11 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
         plyr.volume = btn.volume;
       }
 
-button.addEventListener('pointerdown', function () {
-  plyr.volume = btn.volume;
-  controlsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-  button.classList.add('active');
-});
+      button.addEventListener('click', function () {
+        plyr.volume = btn.volume;
+        controlsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+      });
 
       controlsContainer.appendChild(button);
     });
@@ -64,7 +71,7 @@ button.addEventListener('pointerdown', function () {
 @font-face {font-family: 'BMNECO'; src: url('https://closdelaroche.github.io/fonts/BMNECO.TTF') format('truetype');}
 html {/*outline: solid red 2px;*/ width: 100%; max-width: 360px; min-width: 360px; margin: 0 auto; overflow-x: hidden;}
 body {/*outline: solid green 2px;*/ height: 96vh; background-color: white; margin: 0 auto; margin-top: 26px; padding-right: 25px; overflow-x: hidden;}
-p {display: inline-flex; outline: solid black 2px; width: 100%; margin: 6px; padding: 6.5px; padding-top: 2px; padding-bottom: 2px;}
+p {display: inline-block; outline: solid black 2px; width: 100%; margin: 6px; padding: 6.5px; padding-top: 2px; padding-bottom: 2px;}
 .text-dop {font-family: 'Fira Code', sans-serif; font-size: 12px; font-weight: 500;}
 .text-head {font-family: 'Fira Sans Condensed', sans-serif; /*font-style: italic;*/ text-align: center; font-weight: 400;}
 .text-main {text-align: justify; font-family: 'Fira Sans Extra Condensed', sans-serif; /*font-style: italic;*/ font-size: 20px; font-weight: 300;}
@@ -82,11 +89,19 @@ p {display: inline-flex; outline: solid black 2px; width: 100%; margin: 6px; pad
 <body>
 
 
-<p class="text-head" style="font-size: 21px;">рекомендации к установкам уровней</p> <p class="text-dop" style="color: brown; text-align: justify;">!на данный момент переключатели не работают в мобильных браузерах. используйте десктопные версии!</p>
+<p class="text-head" style="font-size: 21px; ">рекомендации к установкам уровней</p>
+<p class="text-dop" style="color: brown; text-align: center;">!для десктопной версии страницы!</p>
 <p class="text-main">все значения, кроме нуля, понижают уровень и эквивалентны количеству дБ.</p>
 <p class="text-main">значения "12" и "48" &mdash; служат для переключения уровней "нормально" и "тихо" соответственно. уровни для прослушивания в наушниках.</p>
 <p class="text-main">значения "24" и "36" &mdash; служат для переключения уровней "нормально" и "умеренно тихо" соответственно. уровни для прослушивания в мониторах.</p>
+<p class="text-dop" style="color: brown; text-align: center;">!для мобильной версии страницы!</p>
+<p class="text-main">к сожалению, не существует прямого доступа к регулировке уровней с мобильных устройств. все значения статичны, кнопки</p>
 
+
+
+
+
+<br>&emsp;
 <div class="player-container">
 <audio class="ap" controls>
 <source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
@@ -99,7 +114,6 @@ p {display: inline-flex; outline: solid black 2px; width: 100%; margin: 6px; pad
 </audio>
 </div>
 
-<p class="text-main">значения "24" и "36" &mdash; служат для переключения уровней "нормально" и "умеренно тихо" соответственно. уровни для прослушивания в мониторах.</p>
 
 </body>
 </html>
