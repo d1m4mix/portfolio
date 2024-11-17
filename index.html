@@ -31,8 +31,17 @@ p {display: inline-block; outline: solid black 2px; width: 100%; margin: 6px; pa
 .plyr__control {-webkit-tap-highlight-color: transparent; background-color: white !important; color: #522e93 !important;}
 .plyr__control:hover {background-color: inherit; color: inherit; cursor: inherit; transition: none;}
 </style>
-<script>document.addEventListener('DOMContentLoaded', function() {const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent); if (isMobile) {document.body.innerHTML = '<p class="text-main">эта страница недоступна на мобильных устройствах</p>';}});</script>
-<script>document.addEventListener('DOMContentLoaded', function() {const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent); if (isMobile) {window.location.href = 'https://d1m4mix.github.io/p/blocked.html';}});</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    localStorage.setItem('mobileBlocked', 'true');
+    document.body.innerHTML = 'https://d1m4mix.github.io/p/blocked.html';
+  } else if (localStorage.getItem('mobileBlocked') === 'true') {
+    localStorage.removeItem('mobileBlocked'); // Очистка, если снова открыт с десктопа
+  }
+});
+</script>
 </head>
 <body>
 
