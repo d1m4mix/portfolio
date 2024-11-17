@@ -9,8 +9,9 @@
 <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.7/dist/plyr.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    document.body.innerHTML = '<p>Эта страница недоступна на мобильных устройствах.</p>';
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    document.body.innerHTML = '<p style="display: inline-block; outline: solid black 2px; width: 100%; margin: 6px; padding: 6.5px; padding-top: 2px; padding-bottom: 2px;">Эта страница недоступна на мобильных устройствах.</p>';
   }
 });
 </script>
