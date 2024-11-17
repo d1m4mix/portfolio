@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function () {
         plyr.volume = btn.volume;
       }
 
-      button.addEventListener('click', function () {
-        plyr.volume = btn.volume;
-        controlsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        button.classList.add('active');
-      });
+button.addEventListener('pointerdown', function () {
+  plyr.volume = btn.volume;
+  controlsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  button.classList.add('active');
+});
 
       controlsContainer.appendChild(button);
     });
