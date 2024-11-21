@@ -31,17 +31,6 @@ p {display: inline-block; outline: solid black 2px; width: 100%; margin: 6px; pa
 .plyr__control {-webkit-tap-highlight-color: transparent; background-color: white !important; color: #522e93 !important;}
 .plyr__control:hover {background-color: inherit; color: inherit; cursor: inherit; transition: none;}
 </style>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if (isMobile) {
-    localStorage.setItem('mobileBlocked', 'true');
-    document.body.innerHTML = 'https://d1m4mix.github.io/p/blocked.html';
-  } else if (localStorage.getItem('mobileBlocked') === 'true') {
-    localStorage.removeItem('mobileBlocked'); // Очистка, если снова открыт с десктопа
-  }
-});
-</script>
 </head>
 <body>
 
@@ -52,14 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="text-main">трек #1: ov = 5.8 &rarr; cv = same<!--winner--></p>
 <div class="player-container">
 <audio class="ap" controls>
-<source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
+<source src="/audio/znaeshliti.mp3" type="audio/mp3">
 </audio>
 </div>
 
 <p class="text-main">трек #2: ov = 4.6 &rarr; cv = 5.8<!--second--></p>
 <div class="player-container">
 <audio class="ap" controls>
-<source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
+<source src="/audio/znaeshliti.mp3" type="audio/mp3">
 </audio>
 </div>
 
@@ -67,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="text-main">трек #3: ov = 5.9 &rarr; cv = 5.8<!--third--></p>
 <div class="player-container">
 <audio class="ap" controls>
-<source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
+<source src="/audio/znaeshliti.mp3" type="audio/mp3">
 </audio>
 </div>
 
@@ -75,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="text-main">трек #4: ov = 5.8 &rarr; cv = same<!--mine--></p>
 <div class="player-container">
 <audio class="ap" controls>
-<source src="https://d1m4mix.github.io/p/audio/znaeshliti.mp3" type="audio/mp3">
+<source src="/audio/znaeshliti.mp3" type="audio/mp3">
 </audio>
 </div>
 
